@@ -22,14 +22,14 @@ public class SpringBootTutorialApplication {
 
 	//http://localhost:8080/times
 	//http://localhost:8080/times?myNumber=<int>
-	@GetMapping("/times")
-	public String multiplyByTwo(@RequestParam(value = "myNumber", defaultValue = "Please enter a number to multiply by 2 as a parameter...") String number) {
+	@GetMapping("/double")
+	public String multiplyByTwo(@RequestParam(value = "myNumber", defaultValue = "Please enter a number to double") String number) {
 		try {
 			int tempInt = Integer.valueOf(number.trim());
-			number = String.valueOf(tempInt*2);
-			return String.format("Heyo %s!", number);
+			String numberDub = String.valueOf(tempInt*2);
+			return String.format("%s doubled is %s!", number, numberDub);
 		} catch (NumberFormatException ex) {
-			return "Please enter a number to multiply by 2 as a parameter...";
+			return "Please enter a number to double";
 		}
 	}
 }
